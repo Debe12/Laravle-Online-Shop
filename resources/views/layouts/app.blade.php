@@ -42,9 +42,23 @@
 
                     <a class="nav-link active" href="{{ route('product.index') }}">Products</a>
 
-                    <a class="nav-link active" href="/cart">Cart</a>
-
                     <a class="nav-link active" href="{{ route('home.about') }}">About</a>
+
+                    <div class="vr bg-white mx-2 d-name d-lg-black"></div>
+                @guest
+                    <a class="nav-link active" href="{{ route('login') }}">Login</a>
+
+                    <a class="nav-link active" href="{{ route('register') }}">Register</a>
+                @else
+                @if(Auth::user()->role=='admin')
+                <a class="nav-link active" href="{{ route('admin.home.index') }}">Dashboard</a>
+                @endif
+                 <form id="logout" action="{{ route('logout') }}" method="POST">
+                    <a role="button" class="nav-link active"
+                    onclick="document.getElementById('logout').submit();">Logout</a>
+                    @csrf
+            </form>
+            @endguest
 
                 </div>
 
@@ -53,9 +67,6 @@
         </div>
 
     </nav>
-
-
-
     <header class="masthead bg-primary text-white text-center py-4">
 
         <div class="container d-flex align-items-center flex-column">
@@ -67,8 +78,6 @@
     </header>
 
     <!-- header -->
-
-
 
     <div class="container my-4">
 
@@ -87,9 +96,9 @@
                 Copyright - <a class="text-reset fw-bold text-decoration-none" target="_blank"
                     href="https://twitter.com/user">
 
-                    FirstName LastName
+                    Debebe Shibeshi
 
-                </a> - <b>XYZ Company</b>
+                </a> - <b>CIMD Company</b>
 
             </small>
 
