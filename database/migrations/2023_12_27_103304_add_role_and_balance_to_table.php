@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('role')->default('client');
+            $table->unsignedBigInteger('role_id'); // foreign key relationship
             $table->integer('balance');
             //
         });
@@ -28,8 +28,9 @@ return new class extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('role');
             $table->dropColumn('balance');
+            $table->dropColumn('role_id');
+
             //
         });
     }
