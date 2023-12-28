@@ -42,6 +42,7 @@
                     <a class="nav-link active" href="{{ route('home.index') }}">Home</a>
 
                     <a class="nav-link active" href="{{ route('product.index') }}">Products</a>
+                    <a class="nav-link active" href="{{ route('cart.index') }}">Cart</a>
 
                     <a class="nav-link active" href="{{ route('home.about') }}">About</a>
 
@@ -109,7 +110,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
     </script>
-    @nofifyJs
+    @notifyJs
     @include('notify::components.notify')
 
 </body>
