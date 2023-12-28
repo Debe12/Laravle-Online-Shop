@@ -28,8 +28,10 @@
     <td>{{ session('products')[$product->id] }}</td>
 </tr>
 @endforeach
+</tbody>
+</table>
 
-<div class="col-md-4">
+<!-- <div class="col-md-4">
                 <img src="{{ asset('/storage/' . $viewData['product']->image) }}" class="img-fluid rounded-start">
             </div>
             <div class="col-md-8">
@@ -42,7 +44,11 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
+
+
+
+
     <!-- <p class="cart-text">
         <form method="POST" action="{{ route('cart.add', ['id'=>$viewData['product']->id]) }}">
             @csrf
