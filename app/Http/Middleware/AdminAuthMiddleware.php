@@ -15,17 +15,24 @@ class AdminAuthMiddleware
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next, ...$roles)
     {
-        if (Auth::user() && Auth::user()->role == 'admin'){
-            return $next($request);
-            
-        }
-        else
-        {
-            return redirect()->route('home.index');
+        foreach($roles as $role){
+            if(Auth::user() && Auth::user()->hasRole($role)){
+                return $next($request);
+            }
 
         }
+
+        // if (Auth::user() && Auth::user()->role == 'admin'){
+        //     return $next($request);
+            
+        // }
+        // else
+        // {
+            return redirect()->route('home.index');
+
+        // }
        
     }
 }

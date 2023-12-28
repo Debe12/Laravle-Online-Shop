@@ -55,7 +55,9 @@ Route::middleware('admin')->group(function(){
     Route::get('/admin/products/{id}/edit', '\App\Http\Controllers\Admin\AdminProductController@edit')->name("admin.product.edit");
     
     Route::put('/admin/products/{id}/update', '\App\Http\Controllers\Admin\AdminProductController@update')->name("admin.product.update");
-        
+    Route::get("admin/test", function(){
+        return "you are here";
+    })->middleware(['hasrole:super','admin']); 
 
 });
 Auth::routes();
