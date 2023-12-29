@@ -40,7 +40,7 @@ Route::get('/cart/add/{id}', '\App\Http\Controllers\CartController@add')->name("
 
 
 // Auth::routes();
-
+Route::get('/register', '\App\Http\Controllers\RegisterController@create')->name("admin.index");
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::middleware(['hasrole:admin'])->group(function(){
 
@@ -59,7 +59,7 @@ Route::middleware(['hasrole:admin'])->group(function(){
     Route::put('/admin/products/{id}/update', '\App\Http\Controllers\Admin\AdminProductController@update')->name("admin.product.update");
     Route::get("admin/test", function(){
         return "you are here";
-    })->middleware(['hasrole:super','admin']); 
+    })->middleware(['hasrole:admin']); 
 
     Route::midleware('auth')->group(function() {
         Route::get('/cart/purchase','\App\Http\Controllers\CartController@purchase')->name("cart.purchase");

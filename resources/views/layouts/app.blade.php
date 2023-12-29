@@ -47,20 +47,23 @@
                     <a class="nav-link active" href="{{ route('home.about') }}">About</a>
 
                     <div class="vr bg-white mx-2 d-name d-lg-black"></div>
-                @guest
-                    <a class="nav-link active" href="{{ route('login') }}">Login</a>
+                    @guest
+                        <a class="nav-link active" href="{{ route('login') }}">Login</a>
 
-                    <a class="nav-link active" href="{{ route('register') }}">Register</a>
-                @else
-                @if(Auth::user()->role=='admin')
-                <a class="nav-link active" href="{{ route('admin.home.index') }}">Dashboard</a>
-                @endif
-                 <form id="logout" action="{{ route('logout') }}" method="POST">
-                    <a role="button" class="nav-link active"
-                    onclick="document.getElementById('logout').submit();">Logout</a>
-                    @csrf
-            </form>
-            @endguest
+                        <a class="nav-link active" href="{{ route('register') }}">Register</a>
+                    @else
+                        @if (Auth::user()->isAdmin())
+                            <a class="nav-link active" href="{{ route('admin.home.index') }}">Dashboard</a>
+                        @endif
+                        @if (Auth::user()->isSuper())
+                            
+                        @endif
+                        <form id="logout" action="{{ route('logout') }}" method="POST">
+                            <a role="button" class="nav-link active"
+                                onclick="document.getElementById('logout').submit();">Logout</a>
+                            @csrf
+                        </form>
+                    @endguest
 
                 </div>
 

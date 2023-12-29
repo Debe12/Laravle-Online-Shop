@@ -70,7 +70,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'balance' => 5000,
-            'role_id' => Role::where('name','client')->first()->id,
+            'role_id' => Role::where('name','client')->first('id')->id,
         ]);
     }
 }
