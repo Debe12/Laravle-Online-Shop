@@ -8,15 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
-    public static function validate($request)
+
+    public static function vaildate($request)
     {
-        $request->validate([
-            "total"=>"required|numeric",
-            "user_id"=>"required|exists:users,id",
-        ]);
+$request->vaildate([
+    "total"=>"required|numeric",
+    "user_id"=>"required|exists:user_id",
+]);
     }
-    public function items()
-{
-    return $this->hasMany(Item::class);
-}
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
+
 }

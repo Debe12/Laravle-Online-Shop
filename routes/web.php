@@ -73,9 +73,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/admin/products/{id}/edit', '\App\Http\Controllers\Admin\AdminProductController@edit')->name("admin.product.edit");
     
     Route::put('/admin/products/{id}/update', '\App\Http\Controllers\Admin\AdminProductController@update')->name("admin.product.update");
-   
-});
- Route::get("admin/test", function(){
+    Route::get("admin/test", function(){
         return "you are here";
     })->middleware('auth'); 
     
@@ -86,5 +84,23 @@ Route::middleware('auth')->group(function(){
 
 
 Auth::routes();
+Route::middleware(['hasrole:admin'])->group(function(){
+    Route::put('/cart/purchase', '\App\Http\Controllers\CartController@purchase')->name("cart.purchase");
+});
 
-
+// Route::get('/{locale?}', function ($locale = null) {
+//     if (isset($locale) && in_array($locale, config('app.available_locales'))) {
+//         app()->setLocale($locale);
+//     }
+//     $viewData = [];
+ 
+ 
+//     $viewData["title"] = "Home Page - Online Store";
+ 
+ 
+//     return view('home.index')->with("viewData", $viewData);
+ 
+ 
+//  });
+});
+ 

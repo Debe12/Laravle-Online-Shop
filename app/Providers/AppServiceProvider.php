@@ -29,5 +29,10 @@ class AppServiceProvider extends ServiceProvider
 
         });
         //
-    }
+        view()->composer("partials.language_switcher", function ($view) {
+            $view->with('current_local',app()->getLocale());
+            $view->with('current_local',config('app.available_locales'));
+    });
+
+}
 }

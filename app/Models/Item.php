@@ -11,10 +11,17 @@ class Item extends Model
     public static function validate($request)
     {
         $request->validate([
-            "price"=>"required|numeric|gt:0",
-            "quantity"=>"required|numeric|gt:0",
-            "product_id"=>"required|exists:products,id",
-            "order_id"=>"required|exists:orders,id",
+
+"price"=>"required|numeric|gt:0",
+"quantity"=>"required|numeric|gt:0",
+"product_id"=>"required|exists|ptoducts|id",
+"order_id"=>"required|exists|orders|id",
         ]);
     }
+    public function items()
+    {
+        return $this->hasMany(Item::class);
+    }
 }
+
+
