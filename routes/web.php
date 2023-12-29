@@ -59,7 +59,7 @@ Route::middleware(['hasrole:admin'])->group(function(){
     Route::put('/admin/products/{id}/update', '\App\Http\Controllers\Admin\AdminProductController@update')->name("admin.product.update");
     Route::get("admin/test", function(){
         return "you are here";
-    })->middleware(['hasrole:client']); 
+    })->middleware(['hasrole:admin']); 
 
 });
 Auth::routes();

@@ -28,7 +28,7 @@
                         <a href="{{ route('login') }}" class="nav-link active">Login</a>
                         <a href="{{ route('register') }}" class="nav-link active">Register</a>
                     @else
-                        <img class="img-profile rounded-circle float-right" src="{{ asset('/images/undraw_image.png') }}"
+                        <img class="img-profile rounded-circle float-right" src="{{ asset('/image/profile-picture.png') }}"
                             style="float: right;" alt="">
                             <figcaption><span class="fs-3">Admin</span></figcaption>
                         <form action="{{ route('logout') }}" id="logout" method="POST">
@@ -52,7 +52,7 @@
                 <hr />
                 <ul class="nav flex-column sidebar">
                     <li><a href="{{ route('admin.home.index') }}" class="nav-link text-white">- Admin - Home</a></li>
-                    <li><a href="{{ route('admin.products.index') }}" class="nav-link text-white">- Admin - Products</a>
+                    <li><a href="{{ route('admin.product.index') }}" class="nav-link text-white">- Admin - Products</a>
                     </li>
                     <li>
                         <a href="{{ route('admin.home.index') }}" class="mt-2 btn bg-primary text-white">Go back to the
