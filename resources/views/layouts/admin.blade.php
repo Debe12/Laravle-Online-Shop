@@ -106,7 +106,11 @@
     {{-- include JS file here --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
     </script>
+<<<<<<< HEAD
     @notifyJs
+=======
+     @notifyJs
+>>>>>>> f34ccf211771234ccbce244f17342fcdadc67ee7
     @include('notify::components.notify')
 </body>
 
