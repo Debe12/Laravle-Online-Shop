@@ -22,7 +22,23 @@ Route::get('/products/{id}', '\App\Http\Controllers\ProductController@show')->na
 Route::get('/cart', '\App\Http\Controllers\CartController@index')->name("cart.index");
 Route::get('/cart/delete', '\App\Http\Controllers\CartController@delete')->name("cart.delete");
 Route::get('/cart/add/{id}', '\App\Http\Controllers\CartController@add')->name("cart.add");
+Route::get('language/{locale}', '\App\Http\Controllers\LocalizationController@changeLocale')->name("locale");
 
+Route::get('/{locale?}', function ($locale = null) {
+    if (isset($locale) && in_array($locale, config('app.available_locales'))) {
+        app()->setLocale($locale);
+    }
+    $viewData = [];
+ 
+ 
+    $viewData["title"] = "Home Page - Online Store";
+ 
+ 
+    return view('home.index')->with("viewData", $viewData);
+ 
+ 
+ });
+ 
 // Route::get('/admin', '\App\Http\Controllers\Admin\AdminHomeController@index')->name("admin.home.index");
 
 // Route::get('/admin/products', '\App\Http\Controllers\Admin\AdminProductController@index')->name("admin.product.index");
@@ -42,7 +58,7 @@ Route::get('/cart/add/{id}', '\App\Http\Controllers\CartController@add')->name("
 // Auth::routes();
 // Route::get('/register', '\App\Http\Controllers\RegisterController@create')->name("admin.index");
 // // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::middleware(['hasrole:admin'])->group(function(){
+Route::middleware('auth')->group(function(){
 
     Route::get('/admin', '\App\Http\Controllers\Admin\AdminHomeController@index')->name("admin.home.index");
 
@@ -57,12 +73,13 @@ Route::middleware(['hasrole:admin'])->group(function(){
     Route::get('/admin/products/{id}/edit', '\App\Http\Controllers\Admin\AdminProductController@edit')->name("admin.product.edit");
     
     Route::put('/admin/products/{id}/update', '\App\Http\Controllers\Admin\AdminProductController@update')->name("admin.product.update");
-    Route::get("admin/test", function(){
-        return "you are here";
-    })->middleware(['hasrole:admin']); 
+   
 });
-
-    Route::midleware('auth')->group(function() {
+ Route::get("admin/test", function(){
+        return "you are here";
+    })->middleware('auth'); 
+    
+    Route::middleware('auth')->group(function() {
         Route::get('/cart/purchase','\App\Http\Controllers\CartController@purchase')->name("cart.purchase");
     }); 
 
