@@ -26,8 +26,18 @@ class Product extends Model
         }
         return $total;
     }
+<<<<<<< HEAD
     public function product()
     {
         return $this->belongsTo(Product::class);
     }
+=======
+    //
+    public function items()
+{
+    return $this->hasMany(Item::class);
+}
+//
+
+>>>>>>> ed36b7ed32b05d86275ddbbbc4e1ee7989c3f5d2
 }

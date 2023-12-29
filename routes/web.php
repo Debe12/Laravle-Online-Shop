@@ -40,8 +40,8 @@ Route::get('/cart/add/{id}', '\App\Http\Controllers\CartController@add')->name("
 
 
 // Auth::routes();
-Route::get('/register', '\App\Http\Controllers\RegisterController@create')->name("admin.index");
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/register', '\App\Http\Controllers\RegisterController@create')->name("admin.index");
+// // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::middleware(['hasrole:admin'])->group(function(){
 
     Route::get('/admin', '\App\Http\Controllers\Admin\AdminHomeController@index')->name("admin.home.index");
@@ -61,8 +61,14 @@ Route::middleware(['hasrole:admin'])->group(function(){
     Route::get("admin/test", function(){
         return "you are here";
     })->middleware(['hasrole:admin']); 
-
 });
+
+    Route::midleware('auth')->group(function() {
+        Route::get('/cart/purchase','\App\Http\Controllers\CartController@purchase')->name("cart.purchase");
+    }); 
+
+
+
 Auth::routes();
 Route::middleware(['hasrole:admin'])->group(function(){
     Route::put('/cart/purchase', '\App\Http\Controllers\CartController@purchase')->name("cart.purchase");

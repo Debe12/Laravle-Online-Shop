@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Item;
+use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -17,10 +21,10 @@ class CartController extends Controller
 
         }
         $viewData = [];
-        $viewData = ["title"] = "Cart Online Store";
-        $viewData = ["subtitle"] = "Shopping Cart";
-        $viewData = ["total"] = $total;
-        $viewData = ["products"] = $productsInCart;
+        $viewData["title"] = "Cart Online Store";
+        $viewData["subtitle"] = "Shopping Cart";
+        $viewData["total"] = $total;
+        $viewData["products"] = $productsInCart;
         return view('cart.index')->with("viewData", $viewData);
 
 
@@ -102,4 +106,8 @@ class CartController extends Controller
        }
    }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> ed36b7ed32b05d86275ddbbbc4e1ee7989c3f5d2
