@@ -61,6 +61,11 @@ Route::middleware(['hasrole:admin'])->group(function(){
         return "you are here";
     })->middleware(['hasrole:super','admin']); 
 
+    Route::midleware('auth')->group(function() {
+        Route::get('/cart/purchase','\App\Http\Controllers\CartController@purchase')->name("cart.purchase");
+    }); 
+
+
 });
 Auth::routes();
 

@@ -26,5 +26,11 @@ class Product extends Model
         }
         return $total;
     }
+    //
+    public function items()
+{
+    return $this->hasMany(Item::class);
+}
+//
 
 }
