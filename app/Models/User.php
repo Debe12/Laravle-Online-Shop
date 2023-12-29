@@ -66,5 +66,13 @@ class User extends Authenticatable
     {
         return $this::with('roles')->where('name', $role)->get() != null;
     }
-
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+   
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }
